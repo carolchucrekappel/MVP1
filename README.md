@@ -8,7 +8,7 @@ Data: 29/09/2025
 ## 1. Definição do Problema
 O Brasil é um dos países mais visados por crimes cibernéticos, especialmente fraudes bancárias (Bhardwaj et al. 2021). O objetivo deste projeto é desenvolver um Mínimo Produto Viável (MVP) de um modelo de machine learning para prever se uma transação é fraudulenta ou não. Para tanto, utilizaremos um modelo de classificação que toma como base características como valor da transação, saldo inicial e posterior. Com esse produto buscamos propor uma ferramenta que pode auxiliar no combate a fraudes financeiras.
 
-Para isso, utilizaremos o dataset "Financial Fraud Detection Dataset" do repositório Kaggle. O problema será modelado como uma classificação binária, onde o objetivo é distinguir transações fraudulentas de transações lícitas.
+Para isso, utilizaremos o dataset "Financial Fraud Detection Dataset" do repositório Kaggle. O problema será modelado como uma classificação binária, onde o objetivo é distinguir transações fraudulentas de transações lícitas. Optou-se por utilizar esse dataset porque ele contém dados sintéticos que emulam dados reais. Assim, consegue-se superar a problemática de acesso a dados pessoais sensíveis.
 
 ### Hipótese
 As características de uma transação financeira (como tipo de transação, tempo, valor, etc.) contêm informações suficientes para prever se ela é lícita ou não.
@@ -56,7 +56,7 @@ Nesta etapa, realizamos as operações de carga, limpeza e transformação dos d
 
 ### Operações Realizadas
 * **Carga dos Dados**: O dataset é carregado diretamente de uma URL pública, garantindo a reprodutibilidade do notebook.
-* **Engenharia de Features**: As variáveis categóricas são transformadas (como a variável 'type') ou descartadas (como as variáveis origem e destino). Além disso, também são descartadas variáveis com muitos valores únicos e que não contribuem para o modelo. Dessa forma, o modelo é treinado apenas com base em dados realmente relevantes.
+* **Engenharia de Features**: As variáveis categóricas são transformadas (como a variável 'type'), para poder serem usadas no modelo, ou descartadas (como as variáveis origem e destino), visto não serem relevantes para a modelagem. Além disso, também são descartadas variáveis com muitos valores únicos e que não contribuem para o modelo. Dessa forma, o modelo é treinado apenas com base em dados realmente relevantes.
 * **Separação em Treino e Teste**: O dataset é dividido em 80% para treino e 20% para teste. Utilizamos a amostragem estratificada para garantir que a proporção de fraudes e transações lícitas seja a mesma em ambos os conjuntos, o que é crucial para datasets com classes desbalanceadas, como é o caso de datasets de transações fraudulentas.
 * **Padronização (Scaling)**: Criamos uma versão padronizada dos dados (média 0, desvio padrão 1). Embora modelos baseados em árvores (como o Random Forest) não necessitem desta etapa, ela é fundamental para modelos sensíveis à escala, como a Regressão Logística, que usaremos como baseline.
 
